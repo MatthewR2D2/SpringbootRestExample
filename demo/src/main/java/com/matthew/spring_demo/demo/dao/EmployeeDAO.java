@@ -24,7 +24,7 @@ public class EmployeeDAO implements EmployeeDAOInterface{
 	@Override
 	public List<Employee> getEmployees() {
 		
-		String hql = "FROM Employee as atcl ORDER BY atcl.id";
+		String hql = "FROM employees as emp ORDER BY emp.emp_no";
 		return (List<Employee>) entityManager.createQuery(hql).getResultList();
 	}
 
@@ -95,7 +95,7 @@ public class EmployeeDAO implements EmployeeDAOInterface{
 	 * @return Employee
 	 */
 	private Employee getLastInsertedEmployee(){
-		String hql = "from Employee order by id DESC";
+		String hql = "from employees order by emp_no DESC";
 		Query query = entityManager.createQuery(hql);
 		query.setMaxResults(1);
 		Employee Employee = (Employee)query.getSingleResult();
